@@ -1,0 +1,1 @@
+ng new angular17-demo --style=scss
