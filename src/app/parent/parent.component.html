@@ -1,0 +1,14 @@
+<h1>Parent - Enfant</h1>
+<h2>Je suis le parent</h2>
+<br>
+
+<div class="mb-4">
+    <h4>standalone, importer un composant</h4>
+</div>
+
+<div class="mb-4">
+    <h4>&#64;Input, &#64;Output</h4>
+</div>
+<br><br>
+
+<app-child [article]='article' [title]='title' (messageEvent)="getMessageFromChild($event)"></app-child>

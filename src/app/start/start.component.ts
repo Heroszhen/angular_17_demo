@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-start',
@@ -7,6 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './start.component.html',
   styleUrl: './start.component.scss'
 })
-export class StartComponent {
+export class StartComponent implements AfterViewInit{
+  @ViewChild('divRef') divRef!: ElementRef<HTMLDivElement>;
 
+  ngAfterViewInit () {
+    console.log(this.divRef.nativeElement)
+  }
 }
