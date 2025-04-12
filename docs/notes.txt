@@ -1,1 +1,153 @@
+---installation
 ng new angular17-demo --style=scss
+
+options(app.module.ts, app-routing.modules.ts) : --no-standalone --routing
+
+---bootstrap
+npm install bootstrap
+
+dans angular.json
+"styles": [
+    "node_modules/bootstrap/scss/bootstrap.scss",
+    "src/styles.scss"
+],
+"scripts": [
+    "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+]
+
+
+---standalone
+ng g c first
+ng g c first --standalone false
+
+créer un composant: first
+
+dans app.component.ts:
+import { FirstComponent } from './component/first/first.component';
+imports: [RouterOutlet, FirstComponent],
+
+dans app.component.html: 
+<app-first></app-first>
+
+---routage
+dans nav.component.ts:
+import { RouterLink, RouterLinkActive } from '@angular/router';
+imports: [RouterLink, RouterLinkActive],
+
+dan nav.component.html:
+<ul>
+    <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Accueil</a></li>
+    <li><a routerLink="/about" routerLinkActive="active" ariaCurrentWhenActive="page">A propos</a></li>
+</ul>
+
+
+---les syntaxes de template
+https://angular.fr/template-syntax/control-flow
+
+-@if , @else if , @else
+dans ts:
+age = 30;
+getRandomInt(): void {
+    this.age = Math.floor(Math.random() * 30);
+}
+
+dans html:
+<button type="button" (click)="getRandomInt()">Age</button>
+@if (age < 15) {
+    <div>99999</div>
+} @else {
+    <div>88888</div>
+}
+
+
+-@for $index
+@for (user of users; track user.id) {
+    <div>{{user.name}} - {{$index}}</div>
+}
+ou
+@for (user of users; track user.id ; let i = $index) {
+  <p>{{ i }}</p>
+}
+
+
+-@switch
+age = 30;
+
+@switch (age) {
+    @case (10) {
+        <img src="https://media.tenor.com/X-MG_mPDTMAAAAAd/alexandra-daddario.gif" alt="">
+    }
+    @case (20) {
+        <img src="https://i.pinimg.com/564x/8f/96/9d/8f969dac0b827657565c72fd9618a664.jpg" alt="">
+    }
+    @default {
+        <img src="https://i.pinimg.com/originals/14/40/1f/14401f893e6c25653f48a17ed974658d.gif" alt="">
+    }
+}
+
+
+---module
+ng g m form
+ng g c user --standalone false
+ng g c article --standalone false
+
+Ajouter des modules et des composants dans FormModule.
+Ajouter FormModule dans app.component.ts
+
+
+---signaux
+Dans .ts : 
+firstname:WritableSignal<string> = signal('zhen');
+fullname: Signal<string> = computed(() => "HERO " + this.firstname());
+
+Dans .html : 
+<div>Prénom : {{firstname()}}</div>
+<div>Nom complet : {{fullname()}}</div>
+
+
+---@Input et @output
+-@Input
+Dans father.ts:
+article = {
+    "title": "aa",
+    "content": "bb",
+}
+title = 'angular17-demo';
+
+Dans father.html:
+<app-child [article]='article' [title]='title'></app-child>
+
+Dans child.ts:
+@Input() article!:object;
+@Input() title!:string;
+
+-@Output
+Dans child.ts:
+@Output() messageEvent = new EventEmitter<string>();
+this.messageEvent('abc');
+
+Dans father.html:
+<app-child (messageEvent)="getMessageFromChild($event)"></app-child>
+
+Dans father.ts:
+getMessageFromChild(e:string) {
+    alert(e);
+}
+
+---ngModel
+-de js vers html: [ngModel]
+Dans ts:
+slogan:string = "abc";
+
+Dans html:
+<input type="text" id="slogan" name="slogan" [ngModel]="slogan">
+
+-data binding
+Dans html:
+<input type="text" id="slogan" name="slogan" [(ngModel)]="slogan">
+
+-#slogan="ngModel"
+Dans html:
+<input type="text" id="slogan" name="slogan" [(ngModel)]="slogan" #slogan="ngModel">
+{{slogan.value}}
+=>associer ngModel à cette balise input pour qu'on puisse avoir accès au niveau du html

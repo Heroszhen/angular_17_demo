@@ -1,0 +1,29 @@
+<section>
+    <form #userForm="ngForm" (ngSubmit)="createUser($event)" class="container-fluid">
+        <h2>Créer un user</h2>
+        <div class="row">
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="lastname" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" #lastname [(ngModel)]="userM.lastname" required>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="mb-3">
+                    <label for="firstname" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" #firstname [(ngModel)]="userM.firstname" required>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="mb-3">
+                    <label for="slogan" class="form-label">Slogan</label>
+                    <input type="text" class="form-control" id="slogan" name="slogan" [(ngModel)]="slogan">
+                    {{slogan}}
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" [disabled]="userForm.form.invalid">Envoyer</button>
+            </div>
+        </div>
+    </form>
+</section>

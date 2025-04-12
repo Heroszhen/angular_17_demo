@@ -1,13 +1,45 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Event, NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { FormModule } from './form/form.module';
+
+import { FirstComponent } from './component/first/first.component';
+import { NavComponent } from './component/nav/nav.component';
+import { filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, FirstComponent, NavComponent, FormModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppComponent {
+  article = {
+    "title": "aa",
+    "content": "bb",
+  }
   title = 'angular17-demo';
+
+  constructor(
+    private readonly router: Router
+  ) {
+    this.routerListener();
+  }
+
+  getMessageFromChild(e:string) {
+    alert(e);
+  }
+
+  routerListener() {
+    this.router.events.pipe(
+      filter((event:Event): event is NavigationEnd => event instanceof NavigationEnd),
+      map((event: NavigationEnd) => event.url))
+      .subscribe({
+        next: (data:string)=>{
+          console.log(data)
+        }
+    });
+  }
+
 }

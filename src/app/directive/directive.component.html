@@ -1,0 +1,40 @@
+<h1>Directives</h1>
+
+<div class="mb-4">
+    <h4>*ngFor, *ngIf, ngModel(entre parenthèes et crochets), ngClass(entre crochets), ngSwitch(entre crochets), ngStyle(entre crochets) </h4>
+    <section>
+        <br>
+        <ng-container *ngFor="let user of users; let key = index">
+            <div>key-{{key}}: {{user.name}}</div>
+        </ng-container>
+    </section>
+</div>
+
+<div class="mb-4">
+    <h4>&#64;for, &#64;if, &#64;switch</h4>
+    <section>
+        @for (user of users; track user.id ; let key = $index) {
+            <div>key-{{key}}: {{user.name}}</div>
+        }
+        <br>
+
+        @if (isGood) {
+            <div>Good</div>
+        } @else {
+            <div>Not Good</div>
+        }
+        <br>
+
+        @switch (isGood) {
+            @case (true) {
+              true
+            }
+            @case (false) {
+              false
+            }
+            @default {
+              Default case.
+            }
+          }
+    </section>
+</div>

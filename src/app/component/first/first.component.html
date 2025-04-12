@@ -1,0 +1,54 @@
+<p>
+    first works!<br>
+    standalon
+</p>
+
+<section>
+    <h5>if, else</h5>
+    <button type="button" class="btn btn-primary btn-sm" (click)="getRandomInt()">Age</button>
+    <div>{{age}}</div>
+    @if (age < 15) {
+        <div>99999</div>
+    } @else {
+        <div>88888</div>
+    }
+</section>
+
+<section>
+    <h5>for</h5>
+    @for (user of users; track user.name) {
+        <div>{{user.name}} - {{$index}}</div>
+    }
+</section>
+
+<section id="section-switch">
+    <h5>switch</h5>
+    @switch (age) {
+        @case (10) {
+            <img src="https://media.tenor.com/X-MG_mPDTMAAAAAd/alexandra-daddario.gif" alt="">
+        }
+        @case (20) {
+            <img src="https://i.pinimg.com/564x/8f/96/9d/8f969dac0b827657565c72fd9618a664.jpg" alt="">
+        }
+        @default {
+          <img src="https://i.pinimg.com/originals/14/40/1f/14401f893e6c25653f48a17ed974658d.gif" alt="">
+        }
+      }
+</section>
+
+<section>
+    <h5>signaux</h5>
+    <div>Prénom : {{firstname()}}</div>
+    <div>Nom complet : {{fullname()}}</div>
+</section>
+
+<section>
+    <h5>&#64;Input</h5>
+    <div>titre: {{title}}</div>
+    <div>artile : {{article|json}}</div>
+</section>
+
+<section>
+    <h5>&#64;Output</h5>
+    <input type="text" (keyup)="sendMessageToFather($event)">
+</section>

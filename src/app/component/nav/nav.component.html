@@ -1,0 +1,14 @@
+<nav class="mb-3">
+    <div class="d-flex">
+      <a class="me-2" routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      [ariaCurrentWhenActive]="'page'">Début</a>
+      <a class="me-2" routerLink="routage" routerLinkActive="active" [ariaCurrentWhenActive]="'page'">Routage</a>
+      <a class="me-2" routerLink="cycle-de-vie" routerLinkActive="active" [ariaCurrentWhenActive]="'page'">Lifecycle</a>
+      <a class="me-2" routerLink="directive" routerLinkActive="active" [ariaCurrentWhenActive]="'page'">Directive</a>
+      <a class="me-2" routerLink="pipe" routerLinkActive="active" [ariaCurrentWhenActive]="'page'">Pipe</a>
+
+      <a class="me-2" routerLink="compte" routerLinkActive="active" [ariaCurrentWhenActive]="'page'">User</a>
+    </div>
+  </nav>

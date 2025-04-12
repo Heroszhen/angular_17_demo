@@ -1,0 +1,65 @@
+<h1>Routage</h1>
+
+<div class="mb-4">
+    <h4>app.routes.ts</h4>
+    Définir les routes dans ce fichier
+</div>
+
+<div class="mb-4">
+    <h4>Dynamique et paresseux</h4>
+    component: HomeComponent // Chargement immédiat<br>
+    loadComponent: () => import('./routing/routing.component').then(m => m.RoutingComponent) // Chargement paresseux d'un composant
+</div>
+
+<div class="mb-4">
+    <h4>Navigation</h4>
+    <div>
+        Dans une balise a : <br>
+        routerLink="news" routerLinkActive="active"
+    </div>
+    <div>
+        routerLinkActiveOptions(entre les crochets) = "exact: true(entre les accolades)"
+    </div><br>
+    <div>
+        ActivatedRoute: url, params, queryParams(récupérer)
+        <br>
+        Router: navigate (naviguer)
+        <br>
+        Router: events(router listener dans app.component.ts)
+    </div>
+</div>
+
+<div class="mb-4">
+    <h4>Les Guards</h4>
+    <div class="mb-3">
+        <h5>canActivate</h5>
+        ng generate guard auth (implements CanActivate dans la classe)<br><br>
+        Dans app.routes.ts:<br>
+        path: 'dashboard',<br>
+        component: DashboardComponent,<br>
+        canActivate: [AuthGuard]
+    </div>
+    <div class="mb-3">
+        <h5>canLoad</h5>
+        ng generate guard auth2 (implements CanLoad dans la classe)<br><br>
+        Dans app.routes.ts:<br>
+        path: 'articles',<br>
+        component: ArticlesComponent,<br>
+        canLoad: [Auth2Guard]
+    </div>
+    <div class="mb-3">
+        <h5>canMatch(A partir de angular 15)</h5>
+        ng generate guard auth3 (implements CanMatch dans la classe)<br><br>
+        Dans app.routes.ts:<br>
+        path: 'produits',<br>
+        component: ProduisComponent,<br>
+        canMatch: [Auth3Guard]
+    </div>
+    <div>
+        canActivate : Quand tu veux protéger une route après qu'elle a été trouvée dans la configuration du routage, mais avant de l'activer.<br><br>
+
+        canLoad : Quand tu veux éviter le chargement du module lazy-loaded pour certaines routes, basé sur la condition que l'utilisateur doit remplir avant que le module soit téléchargé.<br><br>
+
+        canMatch : Quand tu veux bloquer l’accès à une route avant même qu’elle soit matchée ou chargée. C'est utile pour des vérifications très préventives.
+    </div>
+</div>
