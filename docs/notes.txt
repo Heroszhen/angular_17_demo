@@ -151,3 +151,7 @@ Dans html:
 <input type="text" id="slogan" name="slogan" [(ngModel)]="slogan" #slogan="ngModel">
 {{slogan.value}}
 =>associer ngModel à cette balise input pour qu'on puisse avoir accès au niveau du html
+
+
+
+RxJs

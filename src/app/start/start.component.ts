@@ -1,5 +1,4 @@
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-
+import { Component, ElementRef, ViewChild, AfterViewInit, signal, computed } from '@angular/core';
 @Component({
   selector: 'app-start',
   standalone: true,
@@ -9,6 +8,8 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 })
 export class StartComponent implements AfterViewInit{
   @ViewChild('divRef') divRef!: ElementRef<HTMLDivElement>;
+  firstname = signal<string>('zhen');
+  fullname = computed(() => "HERO " + this.firstname());
 
   ngAfterViewInit () {
     console.log(this.divRef.nativeElement)

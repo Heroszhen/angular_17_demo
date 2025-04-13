@@ -30,3 +30,16 @@
     <h4>Ref</h4>
     &#64;ViewChild()
 </div>
+
+<div class="mb-4" #divRef>
+    <h4>Les signaux</h4>
+    https://lazybobcat.dev/blog/2024-03-23-utilisation-des-signaux-dans-une-application-angular/#cest-quoi-un-signal
+    <br>
+    signal() : Sert à stocker et gérer l'état réactif, ici la liste des utilisateurs.
+    .set(), .update()
+    <br>
+    computed() : Permet de dériver des valeurs calculées à partir de signaux, par exemple filtrer ou trier les utilisateurs.<br>
+    effect() : Exécute des effets secondaires (comme des logs ou des appels API) lorsque les signaux changent.<br>
+    {{firstname()}}<br>
+    {{fullname()}}
+</div>
