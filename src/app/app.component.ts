@@ -1,6 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Event, NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { FormModule } from './form/form.module';
 
 import { FirstComponent } from './component/first/first.component';
 import { NavComponent } from './component/nav/nav.component';
@@ -9,7 +8,7 @@ import { filter, map } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, FirstComponent, NavComponent, FormModule],
+  imports: [RouterOutlet, FirstComponent, NavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

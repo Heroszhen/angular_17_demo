@@ -4,24 +4,38 @@
     <form #userForm="ngForm" (ngSubmit)="createUser($event)" class="container-fluid">
         <h5>Créer un user</h5>
         <div class="row">
-            <div class="col-3">
+            <div class="col-12 mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="civility" id="civility-m" value="m" #civility [(ngModel)]="userM.civility">
+                    <label class="form-check-label" for="civility-m">
+                        Monsieur
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="civility" id="civility-f" value="f" #civility [(ngModel)]="userM.civility">
+                    <label class="form-check-label" for="civility-f">
+                        Madame
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
                 <div class="mb-3">
                     <label for="lastname" class="form-label">Nom</label>
                     <input type="text" class="form-control" id="lastname" name="lastname" #lastname [(ngModel)]="userM.lastname" required>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-md-3">
                 <div class="mb-3">
                     <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" #firstname="ngModel" [(ngModel)]="userM.firstname" required pattern="[a-z]*" minlength="5" maxlength="14">
+                    <input type="text" class="form-control" id="firstname" name="firstname" #firstname="ngModel" [(ngModel)]="userM.firstname" required pattern="[a-zA-Z]*" minlength="5" maxlength="14">
                     <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
                         <div *ngIf="firstname.errors?.['required']">Indiquez un prénom.</div>
                         <div *ngIf="firstname.errors?.['pattern']">Format invalide</div>
-                        <div *ngIf="firstname.errors?.['minlength'] ||firstname.errors?.['maxlength']">5-14</div>
+                        <div *ngIf="firstname.errors?.['minlength'] ||firstname.errors?.['maxlength']">Longueur:5-14</div>
                     </div>
                 </div>
             </div>
-            <div class="col-12">
+            <div class="col-md-3">
                 <div class="mb-3">
                     <label for="slogan" class="form-label">Slogan</label>
                     <input type="text" class="form-control" id="slogan" name="slogan" [(ngModel)]="slogan">
@@ -41,12 +55,20 @@
             <div class="col-md-4">
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe*</label>
-                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userM.password" #password="ngModel" required>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userM.password" #password="ngModel" required appPasswordValidator>
                     <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
                         <div *ngIf="password.errors?.['required']">Indiquez un mot de passe.</div>
-                        
+                        <div *ngIf="password.errors?.['format']">Indiquez un mot de passe valide.</div>
                     </div>
                 </div>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="activated" name="activated" [(ngModel)]="userM.activated" #activated="ngModel">
+                    <label class="form-check-label" for="activated">
+                      Activé
+                    </label>
+                  </div>
             </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary" [disabled]="userForm.form.invalid">Envoyer</button>
@@ -57,4 +79,10 @@
 
 <section>
     <h4>2. formulaire Reactive Form</h4>
+</section>
+
+
+<section class="mb-5">
+    <h4>Validator personnalisé pour le formulaire template-driven</h4>
+    ng g d validators/PasswordValidator
 </section>
