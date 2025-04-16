@@ -6,6 +6,7 @@ import { LifecycleComponent } from './lifecycle/lifecycle.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { PipeComponent } from './pipe/pipe.component';
 import { ParentComponent } from './parent/parent.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 import { AboutComponent } from './component/about/about.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
@@ -20,8 +21,8 @@ export const routes: Routes = [
     {path: 'directive', component: DirectiveComponent},
     {path: 'pipe', component: PipeComponent},
     {path: 'about', component: AboutComponent},
-    {path: 'compte', component: UserComponent},
     {path: 'parent-enfant', component: ParentComponent},
-    
+    {path: 'rxjs', component: RxjsComponent},
+    {path: 'form', component: UserComponent},
     {path: '**', component: NotfoundComponent},
 ];

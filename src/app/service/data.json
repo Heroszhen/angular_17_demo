@@ -1,0 +1,10 @@
+{
+    "users": [
+        {"id": 1, "email": "user1@gmail.com", "name":"user1", "createdAt": "2001-01-01T01:01:01"},
+        {"id": 2, "email": "user2@gmail.com", "name":"user2", "createdAt": "2001-02-01T02:02:02"},
+        {"id": 3, "email": "user3@gmail.com", "name":"user3", "createdAt": "2003-03-01T01:03:01"},
+        {"id": 4, "email": "user4@gmail.com", "name":"user4", "createdAt": "2004-01-04T04:04:01"},
+        {"id": 5, "email": "user5@gmail.com", "name":"user5", "createdAt": "2001-01-05T05:01:05"},
+        {"id": 6, "email": "user6@gmail.com", "name":"user6", "createdAt": "2006-01-06T01:06:01"}
+    ]
+}

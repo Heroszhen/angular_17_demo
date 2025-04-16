@@ -1,6 +1,8 @@
-<section>
+<h1>Formulaires</h1>
+<section class="mb-5">
+    <h4>1. formulaire template-driven</h4>
     <form #userForm="ngForm" (ngSubmit)="createUser($event)" class="container-fluid">
-        <h2>Créer un user</h2>
+        <h5>Créer un user</h5>
         <div class="row">
             <div class="col-3">
                 <div class="mb-3">
@@ -11,7 +13,12 @@
             <div class="col-3">
                 <div class="mb-3">
                     <label for="firstname" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="firstname" name="firstname" #firstname [(ngModel)]="userM.firstname" required>
+                    <input type="text" class="form-control" id="firstname" name="firstname" #firstname="ngModel" [(ngModel)]="userM.firstname" required pattern="[a-z]*" minlength="5" maxlength="14">
+                    <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert alert-danger">
+                        <div *ngIf="firstname.errors?.['required']">Indiquez un prénom.</div>
+                        <div *ngIf="firstname.errors?.['pattern']">Format invalide</div>
+                        <div *ngIf="firstname.errors?.['minlength'] ||firstname.errors?.['maxlength']">5-14</div>
+                    </div>
                 </div>
             </div>
             <div class="col-12">
@@ -21,9 +28,33 @@
                     {{slogan}}
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Mail*</label>
+                    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="userM.email" #email="ngModel" required email>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                        <div *ngIf="email.errors?.['required']">Indiquez un email.</div>
+                        <div *ngIf="email.errors?.['email']">Format d’email invalide.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe*</label>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userM.password" #password="ngModel" required>
+                    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                        <div *ngIf="password.errors?.['required']">Indiquez un mot de passe.</div>
+                        
+                    </div>
+                </div>
+            </div>
             <div class="col-12">
                 <button type="submit" class="btn btn-primary" [disabled]="userForm.form.invalid">Envoyer</button>
             </div>
         </div>
     </form>
+</section>
+
+<section>
+    <h4>2. formulaire Reactive Form</h4>
 </section>
