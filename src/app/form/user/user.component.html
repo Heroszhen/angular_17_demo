@@ -77,12 +77,44 @@
     </form>
 </section>
 
-<section>
+<section class="mb-5">
     <h4>2. formulaire Reactive Form</h4>
+    <form [formGroup]="formGroups" (ngSubmit)="createUserByReativeForm($event)" class="container-fluid">
+        <div class="row">
+            <div class="col-12 mb-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="civility2" id="civility-m2" value="m" formControlName="civility2">
+                    <label class="form-check-label" for="civility-m2">
+                        Monsieur
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="civility2" id="civility-f2" value="f" formControlName="civility2">
+                    <label class="form-check-label" for="civility-f2">
+                        Madame
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="mb-3">
+                    <label for="firstname2" class="form-label">Prénom</label>
+                    <input type="text" class="form-control" id="firstname2" name="firstname2" formControlName="firstname2">
+                    <div class="text-danger" *ngIf="formGroups.get('firstname2')?.invalid && (formGroups.get('firstname2')?.dirty || formGroups.get('firstname2')?.touched)">
+                        <div *ngIf="formGroups.get('firstname2')?.errors?.['required']">Le prénom est requis.</div>
+                        <div *ngIf="formGroups.get('firstname2')?.errors?.['minlength']">Le prénom doit faire au moins 3 caractères.</div>
+                        <div *ngIf="formGroups.get('firstname2')?.errors?.['pattern']">Le prénom ne peut contenir que des lettres.</div>
+                      </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-primary" [disabled]="formGroups.invalid">Envoyer</button>
+            </div>
+        </div>
+    </form>
 </section>
 
 
 <section class="mb-5">
-    <h4>Validator personnalisé pour le formulaire template-driven</h4>
+    <h4>3. Validator personnalisé pour le formulaire template-driven</h4>
     ng g d validators/PasswordValidator
 </section>
