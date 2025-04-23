@@ -55,7 +55,7 @@
             <div class="col-md-4">
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe*</label>
-                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userM.password" #password="ngModel" required appPasswordValidator>
+                    <input type="password" class="form-control" id="password" name="password" [(ngModel)]="userM.password" #password="ngModel" required appPasswordValidator autocomplete="off">
                     <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
                         <div *ngIf="password.errors?.['required']">Indiquez un mot de passe.</div>
                         <div *ngIf="password.errors?.['format']">Indiquez un mot de passe valide.</div>
@@ -95,15 +95,33 @@
                     </label>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="mb-3">
-                    <label for="firstname2" class="form-label">Prénom</label>
-                    <input type="text" class="form-control" id="firstname2" name="firstname2" formControlName="firstname2">
-                    <div class="text-danger" *ngIf="formGroups.get('firstname2')?.invalid && (formGroups.get('firstname2')?.dirty || formGroups.get('firstname2')?.touched)">
-                        <div *ngIf="formGroups.get('firstname2')?.errors?.['required']">Le prénom est requis.</div>
-                        <div *ngIf="formGroups.get('firstname2')?.errors?.['minlength']">Le prénom doit faire au moins 3 caractères.</div>
-                        <div *ngIf="formGroups.get('firstname2')?.errors?.['pattern']">Le prénom ne peut contenir que des lettres.</div>
-                      </div>
+            <div class="col-md-4 mb-3">
+                <label for="lastname2" class="form-label">Nom</label>
+                <input type="text" class="form-control" id="lastname2" name="lastname2" formControlName="lastname2">
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="firstname2" class="form-label">Prénom*</label>
+                <input type="text" class="form-control" id="firstname2" name="firstname2" formControlName="firstname2">
+                <div class="text-danger" *ngIf="formGroups.get('firstname2')?.invalid && (formGroups.get('firstname2')?.dirty || formGroups.get('firstname2')?.touched)">
+                    <div *ngIf="formGroups.get('firstname2')?.errors?.['required']">Le prénom est requis.</div>
+                    <div *ngIf="formGroups.get('firstname2')?.errors?.['minlength']">Le prénom doit faire au moins 3 caractères.</div>
+                    <div *ngIf="formGroups.get('firstname2')?.errors?.['pattern']">Le prénom ne peut contenir que des lettres.</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="email2" class="form-label">Mail*</label>
+                <input type="text" class="form-control" id="email2" name="email2" formControlName="email2">
+                <div class="text-danger" *ngIf="formGroups.get('email2')?.invalid && (formGroups.get('email2')?.dirty || formGroups.get('email2')?.touched)">
+                    <div *ngIf="formGroups.get('email2')?.errors?.['required']">Le prénom est requis.</div>
+                    <div *ngIf="formGroups.get('email2')?.errors?.['email']">Le mail est invalide.</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="password2" class="form-label">Mot de passe*</label>
+                <input type="text" class="form-control" id="password2" name="password2" formControlName="password2" autocomplete="off">
+                <div class="text-danger" *ngIf="formGroups.get('password2')?.invalid && (formGroups.get('password2')?.dirty || formGroups.get('password2')?.touched)">
+                    <div *ngIf="formGroups.get('password2')?.errors?.['required']">Le mot de passe est requis.</div>
+                    <div *ngIf="formGroups.get('password2')?.errors?.['format']">Le format est invalide.</div>
                 </div>
             </div>
             <div class="col-12">
@@ -117,4 +135,9 @@
 <section class="mb-5">
     <h4>3. Validator personnalisé pour le formulaire template-driven</h4>
     ng g d validators/PasswordValidator
+</section>
+
+<section class="mb-5">
+    <h4>4. Validator personnalisé pour le formulaire Reactive Form</h4>
+    Créer le validator à la main : password2.validator.ts
 </section>

@@ -1,6 +1,7 @@
 import { Component, } from '@angular/core';
 import { User } from '../../model/user';
 import { PasswordValidatorDirective } from '../../validators/password-validator.directive';
+import { Password2Validator } from '../../validators/password2.validator';
 import { FormsModule, ReactiveFormsModule, FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
@@ -21,7 +22,7 @@ export class UserComponent {
     lastname2: new FormControl(this.userM2.lastname),
     firstname2: new FormControl(this.userM2.firstname, [Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z]*')]),
     email2: new FormControl(this.userM2.email, [Validators.required, Validators.email]),
-    password2: new FormControl(this.userM2.password, [Validators.required]),
+    password2: new FormControl(this.userM2.password, [Validators.required, Password2Validator()]),
     roles2: new FormControl(this.userM2.roles),
     activated2: new FormControl(this.userM2.activated)
   });
