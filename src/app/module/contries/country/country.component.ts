@@ -42,4 +42,8 @@ export class CountryComponent implements OnInit {
       }
     })
   }
+
+  getArraylanguages(languages: ICountry["languages"]): Array<string> {
+    return Object.values(languages);
+  }
 }

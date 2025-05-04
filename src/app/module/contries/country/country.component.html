@@ -1,1 +1,32 @@
-<p>country works!</p>
+<section class="section-countries">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Index</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Capitale</th>
+            <th scope="col">Population</th>
+            <th scope="col">Langues</th>
+            <th scope="col">Drapeau</th>
+          </tr>
+        </thead>
+        <tbody>
+            @for (country of countries; track country.name.official; let key = $index) {
+                <tr>
+                    <th scope="row">{{key + 1}}</th>
+                    <td>{{country.name.official}}</td>
+                    <td>{{country.capital[0]}}</td>
+                    <td>{{country.population}}</td>
+                    <td>
+                        @for (lang of getArraylanguages(country.languages); track key; let key = $index) {
+                            {{lang}}<br>
+                        }
+                    </td>
+                    <td>
+                        <img src="{{country.flags.png}}" alt="" style="width:100px" >
+                    </td>
+                </tr>
+            }
+        </tbody>
+      </table>
+</section>

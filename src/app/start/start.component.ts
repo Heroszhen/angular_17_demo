@@ -12,6 +12,6 @@ export class StartComponent implements AfterViewInit{
   fullname = computed(() => "HERO " + this.firstname());
 
   ngAfterViewInit () {
-    console.log(this.divRef.nativeElement)
+    //console.log(this.divRef.nativeElement)
   }
 }
