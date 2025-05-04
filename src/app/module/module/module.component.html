@@ -1,0 +1,28 @@
+<h1>Module</h1>
+<div class="mb-4">
+    <h4>Définition</h4>
+    ng generate module nom-du-module
+    <br><br>
+    Un module est une entité qui regroupe et organise des fonctionnalités liées dans une application. Techniquement, un module est une classe décorée avec &#64;NgModule, qui sert à définir un contexte pour un ensemble de composants, directives, pipes, services, et autres modules.
+    <br>
+    - Grouper des fonctionnalité en blocs
+    <br>
+    - Organiser les parties de l'application 
+    <br>
+    - Rassembler les composants et les réexporter dans d'autres modules
+</div>
+
+<div class="mb-4">
+    <h4>Structure</h4>
+    - declarations: lister les composants, les pipes etc qui appartiennent au module
+    <br>
+    - imports: importer d'autres modules utilisés dans celui-ci
+    <br>
+    - exports: les composants, les pipes, les directives qui sont utilisables lorsque le module est importé ailleurs
+    <br>
+    - providers: importer les services injectables
+    <br>
+    - bootstrap: le composant principal à charger
+</div>
+
+<app-country></app-country>

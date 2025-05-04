@@ -11,6 +11,7 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { AboutComponent } from './component/about/about.component';
 import { NotfoundComponent } from './component/notfound/notfound.component';
 import { UserComponent } from './form/user/user.component';
+import { ModuleComponent } from './module/module/module.component';
 
 
 export const routes: Routes = [
@@ -24,5 +25,6 @@ export const routes: Routes = [
     {path: 'parent-enfant', component: ParentComponent},
     {path: 'rxjs', component: RxjsComponent},
     {path: 'form', component: UserComponent},
+    {path: 'module', component: ModuleComponent},
     {path: '**', component: NotfoundComponent},
 ];
