@@ -12,6 +12,7 @@ export class ChildComponent {
   age = 10;
   @Input() article!:object;
   @Input() title!:string;
+  @Input() sayHello!: (name:string) => void;
   @Output() messageEvent = new EventEmitter<string>();
   getRandomInt(): void {
     this.age = Math.floor(Math.random() * 30);

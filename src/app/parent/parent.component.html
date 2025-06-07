@@ -9,6 +9,48 @@
 <div class="mb-4">
     <h4>&#64;Input, &#64;Output</h4>
 </div>
-<br><br>
 
-<app-child [article]='article' [title]='title' (messageEvent)="getMessageFromChild($event)"></app-child>
+<div class="mb-4">
+    <h4>Le parent vers l'enfant</h4>
+    <section>
+        Dans parent ts, définir une valeur : title='My title'
+        <br>
+        Dans parent html, on met [title]='title' dans la balise de l'enfant
+        <br>
+        Dans enfant ts, on utilise le décorator Input pour recevoir la valeur de titre
+    </section>
+</div>
+
+<div class="mb-4">
+    <h4>Le parent utilise les infos de l'enfant</h4>
+    <section>
+        Dans parent html, on met #child dans la balise de l'enfant
+        <br>
+        Dans parent ts, on utilise le décorator ViewChild : 
+        <strong>
+            &#64;ViewChild(ChildComponent) child!: ChildComponent;
+        </strong>
+        <br>
+        On peut utiliser les attributs et les methodes de l'enfant avec this.attribut, this.function
+    </section>
+</div>
+
+<div class="mb-4">
+    <h4> L'enfant vers le parent</h4>
+    <section>
+        Pour envoyer des infos de l'enfant vers le parent:
+        <br>
+        Dans l'enfant ts, on utilise le décorator Output et EventEmitter
+        <br>
+        &#64;Output() messageEvent = new EventEmitter();
+        <br>
+        this.messageEvent.emit('value')
+        <br>
+        Dans le parent html, on met (messageEvent)="getMessageFromChild($event)" dans la balise de l'enfant
+        <br>
+        Dans le parent ts, on crée la fonction getMessageFromChild(e)
+    </section>
+</div>
+
+<br><br>
+<app-child [article]='article' [title]='title' [sayHello]='sayHello' (messageEvent)="getMessageFromChild($event)" #child></app-child>
