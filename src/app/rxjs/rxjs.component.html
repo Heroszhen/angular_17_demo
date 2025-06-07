@@ -17,3 +17,26 @@
     - Subject(un object observable)<br>
     Subject, BehaviorSubject, ReplaySubject, AsyncSubject
 </div>
+
+<div class="mb-4">
+    <h4>CRUD</h4>
+    articles$ = new BehaviorSubject([]);
+    <br>
+    articles$.next(allArticles)
+    <br><br>
+
+    Create : <br>
+    const articles = articles$.getValue();<br>
+    articles$.next([...articles, oneArticle])<br>
+    <br><br>
+
+    Update : <br>
+    const articles = articles$.getValue();<br>
+    articles[index] = newArticle;<br>
+    articles$.next([...articles])
+    <br><br>
+    
+    Delete : <br>
+    const articles = articles$.getValue();<br>
+    articles$.next(articles.filter(article => article.id !== id));
+</div>
