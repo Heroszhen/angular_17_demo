@@ -56,10 +56,14 @@
         canMatch: [Auth3Guard]
     </div>
     <div>
-        canActivate : Quand tu veux protéger une route après qu'elle a été trouvée dans la configuration du routage, mais avant de l'activer.<br><br>
+        canActivate : Quand tu veux protéger une route après qu'elle a été trouvée(sélectionnée) dans la configuration du routage, mais avant de l'activer. 
+        Authentifié
+        <br><br>
+
+        canMatch : Quand tu veux bloquer l’accès à une route avant même qu’elle soit matchée ou chargée (sélectionnée). C'est utile pour des vérifications très préventives.
+        En fonction des permissions
+        <br><br>
 
         canLoad : Quand tu veux éviter le chargement du module lazy-loaded pour certaines routes, basé sur la condition que l'utilisateur doit remplir avant que le module soit téléchargé.<br><br>
-
-        canMatch : Quand tu veux bloquer l’accès à une route avant même qu’elle soit matchée ou chargée. C'est utile pour des vérifications très préventives.
     </div>
 </div>
