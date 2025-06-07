@@ -1,6 +1,22 @@
 <h1>Formulaires</h1>
 <section class="mb-5">
     <h4>1. formulaire template-driven</h4>
+    <section class="mb-3">
+        <ul>
+            <li>Importer le formulaire FormsModule</li>
+            <li>Dans html, on utilise les directive ngForm et ngModel</li>
+            <li>
+                ngForm sert à lier la balise form à Angular<br>
+                ngModel sert à faire un two-way data binding sur une balise dans le formulaire
+            </li>
+            <li>Donner une valeur à l'attribut name dans la balise, le champ et unique</li>
+            <li>Créer un alias sur le champ avec la directive ngModel : #nameCtrl="ngModel" pour qu'on ait accès</li>
+            <li>
+                Les validators internes de angular : required, minlength, maxlength, pattern, email
+            </li>
+            <li>ngSubmit est une directive pour faire la soumission du formulaire</li>
+        </ul>
+    </section>
     <form #userForm="ngForm" (ngSubmit)="createUser($event)" class="container-fluid">
         <h5>Créer un user</h5>
         <div class="row">
@@ -79,6 +95,11 @@
 
 <section class="mb-5">
     <h4>2. formulaire Reactive Form</h4>
+    <section class="mb-3">
+        <ul>
+            <li>les classes : FormGroup, FormControl, Validators</li>
+        </ul>
+    </section>
     <form [formGroup]="formGroups" (ngSubmit)="createUserByReativeForm($event)" class="container-fluid">
         <div class="row">
             <div class="col-12 mb-3">
